@@ -137,18 +137,61 @@ values(default,'Junior Python developer'), (default,'Middle Python developer'), 
 
 select * from roles_11;
 
-create table roles_employee(
+create table roles_employee_111(
 id serial primary key,
 employee_id int not null unique,
-role_id int not null
+role_id int not null,
+foreign key (employee_id)
+		references employees_12(id),
+foreign key (role_id)
+		references roles_11(id)
 )
 ;
 
-select * from roles_employee;
+select * from roles_employee_11;
 
-
-
-
+insert into roles_employee_111(employee_id, role_id)
+values
+(39,19),
+(40,20),
+(12,20),
+(33,10),
+(24,20),
+(26,7),
+(6,	16),
+(22,6),
+(21,18),
+(4,	13),
+(38,4),
+(5,	9),
+(23,8),
+(15,1),
+(3,	10),
+(18,3),
+(8,	13),
+(14,11),
+(27,2),
+(29,14),
+(34,10),
+(1,	2),
+(28,7),
+(9,	20),
+(25,6),
+(32,8),
+(10,14),
+(2,	13),
+(19,1),
+(31,16),
+(35,17),
+(17,8),
+(11,8),
+(36,8),
+(20,19),
+(30,5),
+(13,10),
+(7,	20),
+(16,17),
+(37,1);
 
 
 	
