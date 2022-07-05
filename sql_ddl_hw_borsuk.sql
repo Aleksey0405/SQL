@@ -137,8 +137,14 @@ values(default,'Junior Python developer'), (default,'Middle Python developer'), 
 
 select * from roles_11;
 
-create table roles_employee
+create table roles_employee(
+id serial primary key,
+employee_id int not null unique,
+role_id int not null
+)
+;
 
+select * from roles_employee;
 
 
 
