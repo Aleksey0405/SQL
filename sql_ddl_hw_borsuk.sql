@@ -127,7 +127,7 @@ select * from roles_11;
 
 alter table roles_11
 alter column role_name type varchar(30);
--- default впереди т.к есть id serial при создании таблицы
+-- default as we have column 'role_name' while creating
 insert into roles_11 (id,role_name)
 values(default,'Junior Python developer'), (default,'Middle Python developer'), (default,'Senior Python developer'), (default,'Junior Java developer'),
 (default,'Middle Java developer'), (default,'Senior Java developer'), (default,'Junior JavaScript developer'), (default,'Middle JavaScript developer'),
@@ -137,7 +137,7 @@ values(default,'Junior Python developer'), (default,'Middle Python developer'), 
 
 select * from roles_11;
 
-crea
+create table roles_employee
 
 
 
