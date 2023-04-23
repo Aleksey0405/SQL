@@ -148,7 +148,7 @@ foreign key (role_id)
 )
 ;
 
-select * from roles_employee_11;
+select * from roles_employee_111;
 
 insert into roles_employee_111(employee_id, role_id)
 values
@@ -193,5 +193,6 @@ values
 (16,17),
 (37,1);
 
+select * from roles_employee_111;
 
 	
