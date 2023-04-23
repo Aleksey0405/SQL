@@ -85,3 +85,42 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-04-23 10:32:52
+
+SELECT fname, lname, patronus FROM characters WHERE patronus IS NOT NULL AND patronus <> 'Unknown';
+SELECT lname FROM characters WHERE lname LIKE '%e';
+SELECT SUM(age) FROM characters WHERE age IS NOT NULL;
+SELECT fname, lname, age FROM characters WHERE age IS NOT NULL ORDER BY age desc;
+SELECT fname, age FROM characters WHERE age BETWEEN 50 AND 100;
+SELECT DISTINCT age FROM characters WHERE age IS NOT NULL;
+SELECT * FROM characters WHERE faculty = 'Gryffindor' AND age > 30;
+SELECT distinct faculty FROM characters LIMIT 3;
+SELECT fname FROM characters WHERE fname LIKE 'H____' OR fname LIKE 'L%';
+SELECT avg(age) FROM characters;
+DELETE FROM characters WHERE char_id = 11;
+SELECT lname FROM characters WHERE lname LIKE '%a%';
+SELECT fname AS 'Half-Blood Prince' FROM characters WHERE lname = 'Snape'; 
+SELECT char_id, patronus FROM characters WHERE patronus IS NOT NULL AND patronus <> 'Unknown' ORDER BY patronus ASC;
+SELECT fname, lname FROM characters WHERE lname IN ('Crabbe','Granger','Diggory');
+SELECT MIN(age) FROM characters;
+SELECT fname FROM characters UNION SELECT book_name FROM library;
+SELECT COUNT(faculty) FROM characters GROUP BY faculty HAVING COUNT(faculty) >1;
+SELECT fname, lname,
+CASE
+    WHEN faculty = 'Gryffindor' THEN 'Godric'
+    WHEN faculty = 'Slytherin' THEN 'Salazar'
+    WHEN faculty = 'Ravenclaw' THEN 'Rowena'
+    WHEN faculty = 'Hufflepuff' THEN 'Helga'
+    ELSE 'Muggle'
+END AS Founders
+FROM characters;
+
+SELECT lname FROM characters WHERE lname NOT regexp '^(H|L|S)';
+#PART 2
+SELECT characters.fname, characters.lname, library.book_name FROM characters JOIN library ON characters.book_id = library.book_id;
+SELECT characters.fname, characters.lname, library.book_name FROM characters RIGHT JOIN library ON characters.book_id = library.book_id;
+SELECT library.book_name, characters.patronus FROM characters LEFT JOIN library ON characters.char_id = library.char_id;
+SELECT library.book_name, characters.patronus FROM characters LEFT JOIN library ON characters.char_id = library.char_id;
+SELECT DISTINCT characters.fname, characters.lname, characters.age, library.book_name FROM characters JOIN library ON characters.book_id = library.book_id WHERE characters.age > 15;
+SELECT characters.fname, library.book_name, library.start_date, library.end_date FROM characters LEFT JOIN library ON characters.book_id = library.book_id WHERE characters.age < 15 AND characters.patronus = 'Unknown';
+SELECT COUNT(book_id) FROM library WHERE end_date > (SELECT end_date FROM library WHERE char_id =2);
+SELECT patronus FROM characters WHERE age IN (SELECT age from characters WHERE age > 14);
